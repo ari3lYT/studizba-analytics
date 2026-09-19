@@ -1,5 +1,7 @@
 # Studizba Analytics
 
+**English** · [Русский](README.ru.md)
+
 A self-hosted historical collector, analytics engine, dashboard, REST API, and MCP server for public Studizba teacher reviews at BMSTU.
 
 The project preserves source snapshots, tracks revisions instead of overwriting them, calculates confidence-aware teacher and department metrics, and exposes every score together with its evidence and formula metadata.
