@@ -1,0 +1,15 @@
+[Unit]
+Description=Studizba monitoring dashboard
+After=docker.service network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/studizba-platform
+Environment=STUDIZBA_ROOT=/opt/studizba-platform
+ExecStart=/opt/studizba-platform/.venv/bin/studizba serve-dashboard --host 0.0.0.0 --port 8898
+Restart=always
+RestartSec=10
+User=root
+
+[Install]
+WantedBy=multi-user.target

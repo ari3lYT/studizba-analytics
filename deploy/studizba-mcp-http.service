@@ -1,0 +1,17 @@
+[Unit]
+Description=Studizba Streamable HTTP MCP server
+After=docker.service network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/studizba-platform
+Environment=STUDIZBA_ROOT=/opt/studizba-platform
+Environment=STUDIZBA_MCP_HOST=0.0.0.0
+Environment=STUDIZBA_MCP_PORT=8897
+ExecStart=/opt/studizba-platform/.venv/bin/studizba-mcp-http
+Restart=always
+RestartSec=10
+User=root
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "studizba": {
+      "command": "ssh",
+      "args": ["your-server", "cd /opt/studizba-platform && STUDIZBA_ROOT=/opt/studizba-platform .venv/bin/studizba-mcp"]
+    }
+  }
+}

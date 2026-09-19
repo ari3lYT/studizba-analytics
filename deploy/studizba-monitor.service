@@ -1,0 +1,16 @@
+[Unit]
+Description=Studizba adaptive monitor and analytics worker
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/studizba-platform
+Environment=STUDIZBA_ROOT=/opt/studizba-platform
+ExecStart=/opt/studizba-platform/.venv/bin/studizba monitor --interval 300 --batch 100 --analyze-batch 50
+Restart=always
+RestartSec=20
+User=root
+
+[Install]
+WantedBy=multi-user.target

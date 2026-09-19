@@ -1,0 +1,15 @@
+[Unit]
+Description=Finish Studizba GLM analytics and acceptance
+After=studizba-bootstrap.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/studizba-platform
+Environment=STUDIZBA_ROOT=/opt/studizba-platform
+Environment=GLM_MODEL=glm-4.5-flash
+Environment=GLM_REQUEST_DELAY=3
+ExecStart=/opt/studizba-platform/.venv/bin/studizba finalize
+ExecStartPost=/bin/systemctl enable --now studizba-monitor.service
+Restart=on-failure
+RestartSec=15min
+User=root

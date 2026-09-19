@@ -1,0 +1,10 @@
+[Unit]
+Description=Studizba ChatMock weekly-limit reset notifier
+After=network-online.target chatmock.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/studizba-platform
+EnvironmentFile=/root/apps/mail-to-telegram/.env
+ExecStart=/usr/bin/python3 /opt/studizba-platform/deploy/chatmock_limit_monitor.py

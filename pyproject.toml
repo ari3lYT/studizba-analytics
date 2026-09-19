@@ -1,0 +1,42 @@
+[project]
+name = "studizba-platform"
+version = "0.1.0"
+description = "Historical Studizba collector, analytics engine and MCP server"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+  "beautifulsoup4>=4.12,<5",
+  "fastapi>=0.115,<1",
+  "httpx>=0.27,<1",
+  "mcp>=1.12,<2",
+  "psycopg[binary,pool]>=3.2,<4",
+  "pydantic>=2.8,<3",
+  "python-dateutil>=2.9,<3",
+  "typer>=0.12,<1",
+  "uvicorn>=0.30,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.2,<9", "pytest-asyncio>=0.23,<1", "respx>=0.21,<1"]
+
+[project.scripts]
+studizba = "studizba.cli:app"
+studizba-mcp = "studizba.mcp_server:main"
+studizba-mcp-http = "studizba.mcp_server:http_main"
+
+[project.urls]
+Homepage = "https://github.com/ari3lYT/studizba-analytics"
+Issues = "https://github.com/ari3lYT/studizba-analytics/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/studizba"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: tests requiring Studizba/GLM network access"]
+asyncio_mode = "auto"

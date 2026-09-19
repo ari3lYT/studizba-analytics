@@ -1,0 +1,17 @@
+[Unit]
+Description=Resumable full Studizba BMSTU bootstrap
+After=docker.service network-online.target
+OnSuccess=studizba-finalize.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/studizba-platform
+Environment=STUDIZBA_ROOT=/opt/studizba-platform
+Environment=STUDIZBA_REQUEST_DELAY=3.5
+ExecStart=/opt/studizba-platform/.venv/bin/studizba bootstrap --no-catalog
+Restart=on-failure
+RestartSec=15min
+User=root
+
+[Install]
+WantedBy=multi-user.target

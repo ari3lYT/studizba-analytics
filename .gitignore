@@ -1,0 +1,8 @@
+credentials.local.json
+.env
+.state/
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.log
